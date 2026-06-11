@@ -1,0 +1,42 @@
+# Public deployment: docker compose up --build -d
+# App: http://localhost:8080  |  API: http://localhost:8000
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      MODEL_DIR: "/app/trained model"
+    restart: unless-stopped
+    networks:
+      - braino
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        # Same-origin /api via nginx — works for LAN and public IP access
+        VITE_API_URL: ""
+    ports:
+      - "8080:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - braino
+
+networks:
+  braino:
+    driver: bridge

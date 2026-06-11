@@ -1,0 +1,27 @@
+# Deploy on Render: https://render.com/docs/blueprint-spec
+# 1. Push repo to GitHub
+# 2. New → Blueprint → connect repo
+# 3. Set VITE_API_URL on the static site to your API URL after first deploy
+
+services:
+  - type: web
+    name: braino-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: MODEL_DIR
+        value: /app/trained model
+      - key: PORT
+        value: "8000"
+
+  - type: web
+    name: braino-web
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: frontend/dist
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: VITE_API_URL
+        sync: false

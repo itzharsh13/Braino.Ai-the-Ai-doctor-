@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2,
+    "mood": "neutral",
+    "intensity": 5,
+    "notes": null,
+    "timestamp": "2025-12-12T14:43:12.640746"
+  },
+  {
+    "id": 3,
+    "mood": "neutral",
+    "intensity": 5,
+    "notes": null,
+    "timestamp": "2026-05-22T14:59:10.398033"
+  },
+  {
+    "id": 4,
+    "mood": "very_happy",
+    "intensity": 8,
+    "notes": null,
+    "timestamp": "2026-05-22T16:11:38.762837"
+  }
+]

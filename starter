@@ -1,0 +1,4 @@
+1.C:\AnchorAI\start.ps1
+2.Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+3.powershell -ExecutionPolicy Bypass -File C:\AnchorAI\start.ps1
+4.powershell -ExecutionPolicy Bypass -File C:\AnchorAI\start.ps1

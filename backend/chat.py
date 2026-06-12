@@ -4,7 +4,6 @@ from backend.state import user_manager
 from backend.mental_health_resources import get_all_resources
 from backend.ml_paths import model_file
 import pickle
-import pandas as pd
 import random
 
 router = APIRouter()
@@ -132,9 +131,8 @@ def predict_disease(symptoms):
     input_data = {f: 0 for f in FEATURES}
     input_data.update(symptoms)
 
-    df = pd.DataFrame([input_data])
-    df = df[FEATURES]
-    pred = model.predict(df)
+    dordered_input = [input_data[feature] for feature in FEATURES]
+    pred = model.predict([ordered_input])
 
     if le is not None:
         return le.inverse_transform(pred)[0]

@@ -4,16 +4,17 @@ Write-Host "Starting Braino AI Backend and Frontend..." -ForegroundColor Green
 
 # Start Backend
 Write-Host "Starting Backend (FastAPI)..." -ForegroundColor Cyan
-$backendPath = "C:\AnchorAI\backend"
-$backendProcess = Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd $backendPath; .\venv_new\Scripts\Activate.ps1; uvicorn main:app --reload" -PassThru
+$ProjectRoot = $PSScriptRoot
+$backendPath = Join-Path $ProjectRoot "backend"
+$frontendPath = Join-Path $ProjectRoot "frontend"
+$backendProcess = Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$ProjectRoot'; .\backend\venv_new\Scripts\Activate.ps1; uvicorn backend.main:app --reload" -PassThru
 
 # Wait a few seconds for backend to start
 Start-Sleep -Seconds 3
 
 # Start Frontend
 Write-Host "Starting Frontend (React/Vite)..." -ForegroundColor Cyan
-$frontendPath = "C:\AnchorAI\frontend"
-$frontendProcess = Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd $frontendPath; npm run dev" -PassThru
+$frontendProcess = Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$frontendPath'; npm run dev" -PassThru
 
 Write-Host ""
 Write-Host "✓ Backend running on http://localhost:8000" -ForegroundColor Green

@@ -56,12 +56,12 @@ pip install -r requirements.txt
 # EMAIL_PASSWORD=your_email_password (for email verification)
 
 # Start the backend server
-uvicorn main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 #### 2. Frontend Setup
 ```powershell
-cd C:\AnchorAI\frontend
+cd C:\Braino.Ai\Braino.Ai-main\frontend
 
 # Install dependencies
 npm install
@@ -73,7 +73,7 @@ npm run dev
 #### 3. Quick Start (Recommended)
 ```powershell
 # Run the helper script from the project root
-powershell -ExecutionPolicy Bypass -File C:\AnchorAI\start.ps1
+powershell -ExecutionPolicy Bypass -File C:\Braino.Ai\Braino.Ai-main\start.ps1
 ```
 
 ## 📖 How to Use

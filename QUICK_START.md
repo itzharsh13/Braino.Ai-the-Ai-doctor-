@@ -4,7 +4,7 @@
 
 ### Option 1: Automatic (Recommended)
 ```powershell
-cd C:\AnchorAI
+cd C:\Braino.Ai\Braino.Ai-main
 powershell -ExecutionPolicy Bypass -File start.ps1
 ```
 
@@ -16,12 +16,12 @@ This will automatically start both backend and frontend!
 ```powershell
 cd C:\AnchorAI\backend
 .\venv_new\Scripts\Activate.ps1
-uvicorn main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 **Terminal 2 - Frontend:**
 ```powershell
-cd C:\AnchorAI\frontend
+cd C:\Braino.Ai\Braino.Ai-main\frontend
 npm install
 npm run dev
 ```

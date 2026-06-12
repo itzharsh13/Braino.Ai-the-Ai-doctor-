@@ -14,7 +14,7 @@ Write-Host "Backend (FastAPI)..." -ForegroundColor Cyan
 Start-Process powershell -ArgumentList @(
     "-NoExit",
     "-Command",
-    "Set-Location '$BackendPath'; & '$VenvPython' -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
+    "Set-Location '$ProjectRoot'; & '$VenvPython' -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload"
 )
 
 Start-Sleep -Seconds 3
